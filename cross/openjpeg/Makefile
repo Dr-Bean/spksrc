@@ -5,22 +5,20 @@ PKG_DIST_NAME = $(PKG_NAME)-$(PKG_VERS).$(PKG_EXT)
 PKG_DIST_SITE = http://sourceforge.net/projects/openjpeg.mirror/files/$(PKG_VERS)
 PKG_DIR = $(PKG_NAME)-$(PKG_VERS)
 
-DEPENDS =
+DEPENDS = cross/libpng cross/libtiff
 
 HOMEPAGE = http://www.openjpeg.org/
 COMMENT  = The OpenJPEG library is an open-source JPEG 2000 codec written in C language.
 LICENSE  = BSD
 
-# GNU_CONFIGURE = 1
+PRE_CONFIGURE_TARGET = myPreconf
 
-CONFIGURE_TARGET = nop
-COMPILE_TARGET = myCompile
+GNU_CONFIGURE = 1
 
 include ../../mk/spksrc.cross-cc.mk
 
-ENV += DESTDIR=$(WORK_DIR)/install/
+myPreconf:
+	$(RUN) ./bootstrap.sh
 
-myCompile:
-	$(RUN) cmake . && $(RUN) make
 
 
