@@ -3,4 +3,4 @@ bin:bin/j2k_dump
 bin:bin/j2k_to_image
 lnk:lib/libopenjpeg.so
 lib:lib/libopenjpeg.so.1.5.2
-lnk:lib/libopenjpeg.so.5
+lnk:lib/libopenjpeg.so.1
