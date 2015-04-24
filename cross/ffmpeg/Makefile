@@ -6,7 +6,7 @@ PKG_DIST_SITE = http://www.ffmpeg.org/releases/
 PKG_DIR = $(PKG_NAME)-$(PKG_VERS)
 
 DEPENDS = cross/x264 cross/lame cross/fdk-aac cross/speex cross/flac cross/libvorbis 
-DEPENDS += cross/freetype cross/openssl cross/libass cross/libbluray cross/openjpeg 
+DEPENDS += cross/openjpeg cross/openssl cross/freetype cross/libass cross/libbluray 
 DEPENDS += cross/libopus cross/libtheora cross/rtmpdump cross/libvpx
 
 HOMEPAGE = http://www.ffmpeg.org/
