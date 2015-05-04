@@ -8,7 +8,7 @@ CHANGELOG = "1. update ffmpeg to 2.6<br>2. added 13 new libs/codecs<br>3. suppor
 
 DEPENDS = cross/$(SPK_NAME)
 
-MAINTAINER = cytec
+MAINTAINER = SynoCommunity
 DESCRIPTION = FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video. It includes libavcodec - the leading audio/video codec library.
 RELOAD_UI = yes
 DISPLAY_NAME = ffmpeg
