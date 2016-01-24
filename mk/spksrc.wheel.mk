@@ -1,13 +1,16 @@
 ### Wheel rules
-#   Copy or build all wheels listed in WHEELS.
+#   Create or copy a requirements.txt file containing all the needed wheels;
+#   Pick up cross-compiled wheels, or build/download pure-python wheels;
+#   Rename to a generic format and move wheels to wheelhouse in preparation 
+#    for processing by spksrc.copy.mk.
 
-# Target are executed in the following order:
+# Targets are executed in the following order:
 #  wheel_msg_target
 #  pre_wheel_target   (override with PRE_WHEEL_TARGET)
-#  wheel_target       (override with WHEEL_TARGET)
+#  build_wheel_target (override with WHEEL_TARGET)
 #  post_wheel_target  (override with POST_WHEEL_TARGET)
 # Variables:
-#  WHEELS             List of wheels to go through 
+#  WHEELS             List of wheels to go through
 
 WHEEL_COOKIE = $(WORK_DIR)/.$(COOKIE_PREFIX)wheel_done
 
@@ -17,7 +20,7 @@ else
 $(PRE_WHEEL_TARGET): wheel_msg_target
 endif
 ifeq ($(strip $(WHEEL_TARGET)),)
-WHEEL_TARGET = wheel_target
+WHEEL_TARGET = build_wheel_target
 else
 $(WHEEL_TARGET): $(PRE_WHEEL_TARGET)
 endif
@@ -27,34 +30,38 @@ else
 $(POST_WHEEL_TARGET): $(WHEEL_TARGET)
 endif
 
+
 wheel_msg_target:
 	@$(MSG) "Processing wheels of $(NAME)"
 
 pre_wheel_target: wheel_msg_target
-
-wheel_target: $(PRE_WHEEL_TARGET)
 	@if [ -n "$(WHEELS)" ] ; then \
-		mkdir -p $(WORK_DIR)/wheelhouse ; \
+		mkdir -p $(WORK_DIR)/wheels/inter ; \
 		if [ -f "$(WHEELS)" ] ; then \
 			$(MSG) "Using existing requirements file" ; \
-			cp $(WHEELS) $(WORK_DIR)/wheelhouse ; \
+			cp -f $(WHEELS) $(WORK_DIR)/wheels/inter/requirements.txt ; \
 		else \
 			$(MSG) "Creating requirements file" ; \
-			rm -f $(WORK_DIR)/wheelhouse/requirements.txt ; \
+			rm -f $(WORK_DIR)/wheels/inter/requirements.txt ; \
 			for wheel in $(WHEELS) ; \
 			do \
-				echo $$wheel >> $(WORK_DIR)/wheelhouse/requirements.txt ; \
+				echo $$wheel >> $(WORK_DIR)/wheels/inter/requirements.txt ; \
 			done \
 		fi ; \
-		$(MSG) "Building wheels" ; \
-		rm -rf $(WORK_DIR)/wheelbuild ; \
-		mkdir -p $(WORK_DIR)/wheelbuild ; \
-		$(RUN) $(PIP) wheel --no-deps -b $(WORK_DIR)/wheelbuild -w $(WORK_DIR)/wheelhouse -f $(WORK_DIR)/wheelhouse/ -r $(WORK_DIR)/wheelhouse/requirements.txt ; \
-	else  \
-		$(MSG) "No wheels to process" ; \
 	fi
 
+build_wheel_target: $(PRE_WHEEL_TARGET)
+	@export LD= LDSHARED= CPP= NM= CC= AS= RANLIB= CXX= AR= STRIP= OBJDUMP= READELF= CFLAGS= CPPFLAGS= CXXFLAGS= LDFLAGS= && \
+	  $(PIP) -vvv wheel --no-deps -w $(WORK_DIR)/wheels/inter -f $(WORK_DIR)/wheels/inter -r $(WORK_DIR)/wheels/inter/requirements.txt ; \
+
 post_wheel_target: $(WHEEL_TARGET)
+	@mkdir -p $(STAGING_INSTALL_PREFIX)/share/wheelhouse
+	cp $(WORK_DIR)/wheels/inter/requirements.txt $(STAGING_INSTALL_PREFIX)/share/wheelhouse/requirements.txt
+	@cd $(WORK_DIR)/wheels/inter && \
+	  for w in *.whl; do \
+		cp -f $$w $(STAGING_INSTALL_PREFIX)/share/wheelhouse/`echo $$w | cut -d"-" -f -2`-py2.py3-none-any.whl; \
+	  done ; \
+
 
 ifeq ($(wildcard $(WHEEL_COOKIE)),)
 wheel: $(WHEEL_COOKIE)
