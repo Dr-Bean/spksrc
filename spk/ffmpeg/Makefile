@@ -1,9 +1,9 @@
 SPK_NAME = ffmpeg
-SPK_VERS = 2.6
-SPK_REV = 3
+SPK_VERS = 2.8.5
+SPK_REV = 4
 SPK_ICON = src/ffmpeg.png
 DSM_UI_DIR = app
-CHANGELOG = "1. update ffmpeg to 2.6<br>2. added 13 new libs/codecs<br>3. support for yasm added"
+CHANGELOG = "1. update ffmpeg to 2.8.5<br>2. added 13 new libs/codecs<br>3. support for yasm added"
 
 
 DEPENDS = cross/$(SPK_NAME)
