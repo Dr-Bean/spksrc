@@ -19,6 +19,3 @@ include ../../mk/spksrc.cross-cc.mk
 
 myPreconf:
 	$(RUN) ./bootstrap.sh
-
-
-
