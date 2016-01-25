@@ -7,13 +7,12 @@ PKG_DIR = $(PKG_NAME)-$(PKG_VERS)
 
 DEPENDS = cross/libxml2 cross/freetype cross/fontconfig
 
-HOMEPAGE =
-COMMENT  =
-LICENSE  =
+HOMEPAGE = http://www.videolan.org/developers/libbluray.html
+COMMENT  = libbluray is an open-source library designed for Blu-Ray Discs playback for media players, like VLC or MPlayer.
+LICENSE  = LGPL v2.1
 
 GNU_CONFIGURE = 1
 
 CONFIGURE_ARGS = --disable-examples --disable-doxygen-doc --disable-doxygen-dot
 
 include ../../mk/spksrc.cross-cc.mk
-
