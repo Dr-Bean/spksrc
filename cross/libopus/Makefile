@@ -7,13 +7,12 @@ PKG_DIR = opus-$(PKG_VERS)
 
 DEPENDS =
 
-HOMEPAGE =
-COMMENT  =
-LICENSE  =
+HOMEPAGE = https://www.opus-codec.org
+COMMENT  = Opus is a totally open, royalty-free, highly versatile audio codec. Opus is unmatched for interactive speech and music transmission over the Internet, but is also intended for storage and streaming applications.
+LICENSE  = BSD
 
 GNU_CONFIGURE = 1
 
 CONFIGURE_ARGS = --disable-doc --disable-extra-programs
 
 include ../../mk/spksrc.cross-cc.mk
-
