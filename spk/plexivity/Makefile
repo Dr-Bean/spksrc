@@ -5,7 +5,7 @@ SPK_ICON = src/plexivity.png
 DSM_UI_DIR = app
 BETA = 1
 
-DEPENDS  = 
+DEPENDS  =
 SPK_DEPENDS = "python>=2.7.6-8"
 
 WHEELS = src/requirements.txt
@@ -24,7 +24,6 @@ SSS_SCRIPT       = src/dsm-control.sh
 FWPORTS          = src/${SPK_NAME}.sc
 
 INSTALL_PREFIX = /usr/local/$(SPK_NAME)
-COPY_TARGET = nop
 
 POST_STRIP_TARGET = plexivity_extra_install
 
@@ -46,9 +45,5 @@ plexivity_extra_install: $(STAGING_DIR)/share/plexivity
 	done
 
 $(STAGING_DIR)/share/plexivity:
-	install -m 755 -d $(STAGING_DIR)/share
-	install -m 755 -d $(STAGING_DIR)/share/wheelhouse
-	install -m 644 $(WORK_DIR)/wheelhouse/* $(STAGING_DIR)/share/wheelhouse/
-	cd $(STAGING_DIR)/share && git clone https://bitbucket.org/raphaelmutschler/plexivity.git plexivity 
+	cd $(STAGING_DIR)/share && git clone https://bitbucket.org/raphaelmutschler/plexivity.git plexivity
 	cd $(STAGING_DIR)/share/plexivity && git checkout $(SPK_VERS) && rm -rf .git && rm .gitignore
-	

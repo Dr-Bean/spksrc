@@ -35,18 +35,12 @@ PYTHON_LIB_DIR = lib/python$(SPK_SHORT_VERS)
 
 PLIST_TRANSFORM = sed -e 's%@PYTHON_SITE_PACKAGES@%$(PYTHON_LIB_DIR)/site-packages%' -e 's%@PYTHON_VERSION@%$(SPK_SHORT_VERS)%'
 
-POST_STRIP_TARGET = python_extra_install
+POST_STRIP_TARGET = python_cleanup
 
 BUSYBOX_CONFIG = usrmng nice daemon
 ENV += BUSYBOX_CONFIG="$(BUSYBOX_CONFIG)"
 
 include ../../mk/spksrc.spk.mk
-
-.PHONY: python_extra_install
-python_extra_install: python_cleanup
-	install -m 755 -d $(STAGING_DIR)/share
-	install -m 755 -d $(STAGING_DIR)/share/wheelhouse
-	install -m 644 $(WORK_DIR)/wheelhouse/* $(STAGING_DIR)/share/wheelhouse/
 
 .PHONY: python_cleanup
 python_cleanup:

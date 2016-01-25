@@ -22,13 +22,4 @@ SSS_SCRIPT       = src/dsm-control.sh
 
 INSTALL_PREFIX = /usr/local/$(SPK_NAME)
 
-COPY_TARGET = nop
-POST_STRIP_TARGET = mercurial_extra_install
-
 include ../../mk/spksrc.spk.mk
-
-.PHONY: mercurial_extra_install
-mercurial_extra_install:
-	install -m 755 -d $(STAGING_DIR)/share
-	install -m 755 -d $(STAGING_DIR)/share/wheelhouse
-	install -m 644 $(WORK_DIR)/wheelhouse/* $(STAGING_DIR)/share/wheelhouse/

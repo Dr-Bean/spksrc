@@ -40,8 +40,6 @@ include ../../mk/spksrc.spk.mk
 deluge_extra_install:
 	install -m 755 -d $(STAGING_DIR)/var
 	install -m 644 src/core.conf $(STAGING_DIR)/var/core.conf
-	install -m 755 -d ${STAGING_DIR}/share/wheelhouse
-	install -m 644 ${WORK_DIR}/wheelhouse/* ${STAGING_DIR}/share/wheelhouse/
 	install -m 755 -d $(STAGING_DIR)/app
 	install -m 644 src/app/config $(STAGING_DIR)/app/config
 	install -m 755 -d $(STAGING_DIR)/app/images

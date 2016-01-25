@@ -4,12 +4,12 @@ SPK_REV = 3
 SPK_ICON = src/saltpad.png
 DSM_UI_DIR = app
 
-DEPENDS  = 
+DEPENDS =
 WHEELS = src/requirements.txt
 SPK_DEPENDS = "python>=2.7.9-12:salt-master"
 
 MAINTAINER = SynoCommunity
-DESCRIPTION = A gui and cli to manage saltstack deployments 
+DESCRIPTION = A gui and cli to manage saltstack deployments
 ADMIN_PORT = 8283
 RELOAD_UI = yes
 DISPLAY_NAME = SaltPad
@@ -24,7 +24,6 @@ FWPORTS          = src/$(SPK_NAME).sc
 
 INSTALL_PREFIX = /usr/local/$(SPK_NAME)
 
-COPY_TARGET = nop
 POST_STRIP_TARGET = saltpad_extra_install
 
 # Pure Python package, make sure ARCH is not defined
@@ -34,8 +33,6 @@ include ../../mk/spksrc.spk.mk
 
 .PHONY: saltpad_extra_install
 saltpad_extra_install: $(STAGING_DIR)/share/saltpad
-	install -m 755 -d ${STAGING_DIR}/share/wheelhouse
-	install -m 644 ${WORK_DIR}/wheelhouse/* ${STAGING_DIR}/share/wheelhouse/
 	install -m 755 -d $(STAGING_DIR)/var
 	install -m 755 -d $(STAGING_DIR)/app
 	install -m 755 -d $(STAGING_DIR)/app/images

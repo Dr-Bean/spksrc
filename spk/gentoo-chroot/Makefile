@@ -24,7 +24,6 @@ SSS_SCRIPT       = src/dsm-control.sh
 
 INSTALL_PREFIX = /usr/local/$(SPK_NAME)
 
-COPY_TARGET = nop
 POST_STRIP_TARGET = gentoo-chroot_extra_install
 
 GENTOO_ARCH =
@@ -56,8 +55,6 @@ include ../../mk/spksrc.spk.mk
 
 .PHONY: gentoo-chroot_extra_install
 gentoo-chroot_extra_install:
-	install -m 755 -d ${STAGING_DIR}/share/wheelhouse
-	install -m 644 ${WORK_DIR}/wheelhouse/* ${STAGING_DIR}/share/wheelhouse/
 	wget -nv -c -O $(WORK_DIR)/$(GENTOO_STAGE3_FILE) $(GENTOO_STAGE3_URL)
 	install -m 755 -d $(STAGING_DIR)/var
 	install -m 755 -d $(STAGING_DIR)/var/chroottarget

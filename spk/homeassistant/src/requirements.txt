@@ -15,7 +15,7 @@ VarEvents>=1.0.0 #dependency for PyISY
 zeroconf>=0.16.0
 
 # sun
-pyephem>=3.7
+pyephem==3.7.5.3
 
 # lights.hue
 phue>=0.8
@@ -48,7 +48,7 @@ python-nest>=2.1
 PyISY>=1.0.2
 
 # sensor.systemmonitor
-psutil>=2.2.1
+# psutil==3.3.0
 
 #pushover notifications
 python-pushover>=0.2

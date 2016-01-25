@@ -13,8 +13,8 @@ LICENSE  = BSD
 
 # Build the libtorrent library first, then create a wheel with the python bindings
 CONFIGURE_TARGET = configure_target
-COMPILE_TARGET = compile_target
-INSTALL_TARGET = install_target wheel_python_module
+COMPILE_TARGET = compile_target compile_python_wheel
+INSTALL_TARGET = install_target install_python_wheel
 
 GNU_CONFIGURE = 1
 CONFIGURE_ARGS  = --enable-python-binding --with-libgeoip --with-libiconv
