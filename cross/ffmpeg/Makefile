@@ -13,12 +13,16 @@ HOMEPAGE = http://www.ffmpeg.org/
 COMMENT  = FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video. It includes libavcodec - the leading audio/video codec library
 LICENSE  =
 
-CONFIGURE_ARGS = --enable-gpl --enable-version3 --enable-nonfree --enable-cross-compile --enable-rpath --target-os=linux --cross-prefix=$(TC_PATH)$(TC_PREFIX) --prefix=$(INSTALL_PREFIX) --extra-cflags="-I$(WORK_DIR)/install$(INSTALL_PREFIX)/include" --extra-ldflags="-L$(WORK_DIR)/install$(INSTALL_PREFIX)/lib" --extra-libs="-lxml2 -ldl"
+CONFIGURE_ARGS = --enable-gpl --enable-version3 --enable-nonfree --enable-cross-compile --enable-rpath 
+CONFIGURE_ARGS += --target-os=linux --cross-prefix=$(TC_PATH)$(TC_PREFIX) --prefix=$(INSTALL_PREFIX) 
+CONFIGURE_ARGS += --extra-cflags="-I$(WORK_DIR)/install$(INSTALL_PREFIX)/include" 
+CONFIGURE_ARGS += --extra-ldflags="-L$(WORK_DIR)/install$(INSTALL_PREFIX)/lib" --extra-libs="-lxml2 -ldl"
 CONFIGURE_ARGS += --disable-doc --disable-htmlpages --disable-manpages --disable-podpages --disable-txtpages --pkg-config=/usr/bin/pkg-config 
 CONFIGURE_ARGS += --enable-pic --disable-debug --enable-pthreads --enable-thumb #--disable-optimizations --disable-runtime-cpudetect
-CONFIGURE_ARGS += --enable-libx264 --enable-libmp3lame --enable-libfdk-aac --enable-libspeex --enable-openssl --enable-libvorbis --enable-gpl --enable-nonfree 
-CONFIGURE_ARGS += --enable-libass --enable-libbluray --enable-libopenjpeg --enable-libopus --enable-libtheora --enable-librtmp --enable-fontconfig --enable-libfreetype
-CONFIGURE_ARGS += --enable-libvpx
+CONFIGURE_ARGS += --enable-libx264 --enable-libmp3lame --enable-libfdk-aac --enable-libspeex --enable-openssl --enable-libvorbis 
+CONFIGURE_ARGS += --enable-gpl --enable-nonfree  --enable-fontconfig --enable-libfreetype
+CONFIGURE_ARGS += --enable-libass --enable-libbluray --enable-libopenjpeg --enable-libopus --enable-libtheora --enable-librtmp
+CONFIGURE_ARGS += --enable-libvpx --disable-static --enable-shared --ranlib=$(RANLIB) --enable-pic
 
 include ../../mk/spksrc.cross-cc.mk
 

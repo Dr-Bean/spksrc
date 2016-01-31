@@ -16,3 +16,7 @@ CONFIGURE_ARGS = --disable-thorough-tests --disable-doxygen-docs --disable-oggte
 
 include ../../mk/spksrc.cross-cc.mk
 
+
+ifeq ($(findstring $(ARCH),$(PPC_ARCHES)),$(ARCH))
+	CONFIGURE_ARGS += --disable-asm --disable-altivec
+endif
