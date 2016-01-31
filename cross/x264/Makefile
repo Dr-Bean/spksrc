@@ -12,7 +12,7 @@ COMMENT  = x264 is a free software library and application for encoding video st
 LICENSE  =
 
 GNU_CONFIGURE = 1
-CONFIGURE_ARGS = --enable-static --prefix=$(INSTALL_PREFIX)
+CONFIGURE_ARGS = --enable-static --prefix=$(INSTALL_PREFIX) --enable-pic
 
 include ../../mk/spksrc.cross-cc.mk
 

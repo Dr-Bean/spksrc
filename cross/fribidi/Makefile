@@ -13,6 +13,6 @@ LICENSE  =
 
 GNU_CONFIGURE = 1
 
-CONFIGURE_ARGS = --enable-static --enable-shared
+CONFIGURE_ARGS = --enable-static --with-pic
 
 include ../../mk/spksrc.cross-cc.mk
