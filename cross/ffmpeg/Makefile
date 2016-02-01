@@ -45,3 +45,9 @@ CONFIGURE_ARGS += --arch=x86_64
 DEPENDS += native/yasm
 ENV += PATH=$(WORK_DIR)/../../../native/yasm/work-native/install/usr/local/bin/:$$PATH
 endif
+
+ifeq ($(findstring $(ARCH),$(PPC_ARCHES)),$(ARCH))
+CONFIGURE_ARGS += --arch=ppc
+DEPENDS += native/yasm
+ENV += PATH=$(WORK_DIR)/../../../native/yasm/work-native/install/usr/local/bin/:$$PATH
+endif
