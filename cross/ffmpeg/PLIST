@@ -16,6 +16,9 @@ lib:lib/libavformat.so.56.40.101
 lnk:lib/libavutil.so
 lnk:lib/libavutil.so.54
 lib:lib/libavutil.so.54.31.100
+lnk:lib/libpostproc.so
+lnk:lib/libpostproc.so.53
+lib:lib/libpostproc.so.53.3.100
 lnk:lib/libswresample.so
 lnk:lib/libswresample.so.1
 lib:lib/libswresample.so.1.2.101
