@@ -1,17 +1,17 @@
 PKG_NAME = libvpx
-PKG_VERS = 1.3.0
-PKG_EXT = tar.bz2
-PKG_DIST_NAME = $(PKG_NAME)-v$(PKG_VERS).$(PKG_EXT)
-PKG_DIST_SITE = https://webm.googlecode.com/files
-PKG_DIR = $(PKG_NAME)-v$(PKG_VERS)
+PKG_VERS = 1.5.0
+PKG_EXT = tar.gz
+PKG_DIST_NAME = v$(PKG_VERS).$(PKG_EXT)
+PKG_DIST_SITE = https://github.com/webmproject/libvpx/archive
+PKG_DIR = $(PKG_NAME)-$(PKG_VERS)
 
 DEPENDS =
 
 HOMEPAGE = http://www.webmproject.org/code/
 COMMENT  =
 
-CONFIGURE_ARGS = --disable-sse --disable-sse2 --disable-sse3 --disable-ssse3 --disable-sse4_1 --enable-shared 
-CONFIGURE_ARGS += --enable-vp8 --enable-vp9 --disable-examples --disable-docs --disable-altivec --disable-unit_tests
+CONFIGURE_ARGS = --disable-sse --disable-sse2 --disable-sse3 --disable-ssse3 --disable-sse4_1 --enable-shared
+CONFIGURE_ARGS += --enable-vp8 --enable-vp9 --disable-examples --disable-docs --disable-unit_tests
 CONFIGURE_ARGS += --enable-postproc --enable-vp9-postproc --enable-pic  --prefix=$(INSTALL_PREFIX)
 
 include ../../mk/spksrc.cross-cc.mk

@@ -1,5 +1,5 @@
 PKG_NAME = libopus
-PKG_VERS = 1.1
+PKG_VERS = 1.1.2
 PKG_EXT = tar.gz
 PKG_DIST_NAME = opus-$(PKG_VERS).$(PKG_EXT)
 PKG_DIST_SITE = http://downloads.xiph.org/releases/opus
