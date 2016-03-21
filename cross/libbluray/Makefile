@@ -1,5 +1,5 @@
 PKG_NAME = libbluray
-PKG_VERS = 0.7.0
+PKG_VERS = 0.9.2
 PKG_EXT = tar.bz2
 PKG_DIST_NAME = $(PKG_NAME)-$(PKG_VERS).$(PKG_EXT)
 PKG_DIST_SITE = ftp://ftp.videolan.org/pub/videolan/libbluray/0.7.0
