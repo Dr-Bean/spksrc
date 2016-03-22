@@ -11,7 +11,7 @@ COMMENT  = x264 is a free software library and application for encoding video st
 LICENSE  =
 
 GNU_CONFIGURE = 1
-CONFIGURE_ARGS = --enable-static --prefix=$(INSTALL_PREFIX) --enable-pic
+CONFIGURE_ARGS = --enable-static --prefix=$(INSTALL_PREFIX) --enable-pic --cross-prefix=$(TC_PATH)$(TC_PREFIX)
 
 include ../../mk/spksrc.cross-cc.mk
 
@@ -34,12 +34,14 @@ endif
 
 ifeq ($(findstring $(ARCH), $(x64_ARCHES)),$(ARCH))
 DEPENDS += native/yasm
+ENV += AS=$(WORK_DIR)/../../../native/yasm/work-native/install/usr/local/bin/yasm
 ENV += PATH=$(WORK_DIR)/../../../native/yasm/work-native/install/usr/local/bin/:$$PATH
 ENV += x264_ARCH=X86_64
 endif
 
 ifeq ($(findstring $(ARCH), $(x86_ARCHES)),$(ARCH))
 DEPENDS += native/yasm
+ENV += AS=$(WORK_DIR)/../../../native/yasm/work-native/install/usr/local/bin/yasm
 ENV += PATH=$(WORK_DIR)/../../../native/yasm/work-native/install/usr/local/bin/:$$PATH
 ENV += x264_ARCH=X86
 endif

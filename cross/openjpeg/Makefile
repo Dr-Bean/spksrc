@@ -11,11 +11,14 @@ HOMEPAGE = http://www.openjpeg.org/
 COMMENT  = The OpenJPEG library is an open-source JPEG 2000 codec written in C language.
 LICENSE  = BSD
 
-PRE_CONFIGURE_TARGET = myPreconf
+CONFIGURE_TARGET = myConf
 
 GNU_CONFIGURE = 1
 
 include ../../mk/spksrc.cross-cc.mk
 
-myPreconf:
-	$(RUN) ./bootstrap.sh
+ENV += DESTDIR=$(STAGING_INSTALL_PREFIX)/../../
+
+myConf:
+	$(RUN) cmake .
+
