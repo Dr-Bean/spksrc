@@ -1,4 +1,4 @@
-_[For package requests, click here](https://github.com/SynoCommunity/spksrc/blob/master/.github/PACKAGE_REQUEST_TEMPLATE.md)_.
+_For package requests, click here: https://github.com/SynoCommunity/spksrc/blob/master/.github/PACKAGE_REQUEST_TEMPLATE.md_.
 
 ### Setup
 Package Name:  
